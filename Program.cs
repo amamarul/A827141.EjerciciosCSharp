@@ -16,6 +16,7 @@ namespace LaConsola
             Dos();
             // Tres();
             Cuatro();
+            Cinco();
         }
 
         private static void Uno() 
@@ -54,6 +55,11 @@ namespace LaConsola
             IngresoFrases();
 
             Console.Clear();
+        }
+
+        private static void Cinco() 
+        {           
+            SalirControlMas("F");
         }
 
         public static void WriteGreenLine(string value, bool extraLine = true)
@@ -122,7 +128,7 @@ namespace LaConsola
 
         public static void IngresoFrases(
             string salida = "fin", 
-            string Mensaje = "Escribe tu frase o \"fin\" para salir"
+            string Mensaje = "Escribe tu frase"
         ) {
             Console.WriteLine("\n");
             
@@ -130,7 +136,9 @@ namespace LaConsola
 
             do
             {
-                WriteRedLine(Mensaje);
+                Console.WriteLine("\t" + Mensaje);
+
+                WriteRedLine("\to \""+ salida +"\" para no ingresar mas frases");
 
                 input = Console.ReadLine();
 
@@ -139,6 +147,33 @@ namespace LaConsola
                     Frases.Add(new Frase(input));
                 }
             } while (salida != input);
+        }
+
+        /*
+            Ref.: https://docs.microsoft.com/en-us/dotnet/api/system.console.readkey?view=net-5.0
+         */
+        public static void SalirControlMas(string teclaSalida)
+        {
+            ConsoleKeyInfo cki;
+            // Prevent example from ending if CTL+C is pressed.
+            Console.TreatControlCAsInput = true;
+
+            string salir = "CTL+" + teclaSalida.ToUpper();
+            string tempsalir = "";
+
+            WriteRedLine("Presiona CTL + "+ teclaSalida +" para salir");
+
+            do {
+                cki = Console.ReadKey(true);
+
+                tempsalir = "";
+
+                if ((cki.Modifiers & ConsoleModifiers.Control) != 0) 
+                    tempsalir += "CTL+";
+
+                tempsalir += cki.Key;
+                
+            } while (salir != tempsalir);
 
             Exit();
         }
