@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Threading;
 
 namespace LaConsola
 {
     class Program
     {
+        private static string NombreUsuario { get; set; }
+        
+        
         static void Main(string[] args)
-        {
+        {           
             Uno();
             Dos();
             Tres();
@@ -23,11 +27,11 @@ namespace LaConsola
         {
             Console.Clear();
 
-            string nombre = IngresoTexto("Por favor ingrese su nombre");
+            NombreUsuario = IngresoTexto("Por favor ingrese su nombre");
 
             Console.Clear();
 
-            Console.WriteLine("\n\nBienvenid@ " + nombre + "\n");
+            Console.WriteLine("\n\nBienvenid@ " + NombreUsuario + "\n");
 
             PresionaUnaTeclaParaContinuar("Presiona una tecla para continuar");
         }
@@ -37,10 +41,8 @@ namespace LaConsola
             PresionaXParaSalir();
         }
 
-        public static void WriteGreenLine(string value)
-        {
-            Console.Clear();
-            
+        public static void WriteGreenLine(string value, bool extraLine = true)
+        {           
             Console.BackgroundColor = ConsoleColor.Green;
             Console.ForegroundColor = ConsoleColor.Black;
             
@@ -50,8 +52,10 @@ namespace LaConsola
 
             Console.ResetColor();
 
-            Console.WriteLine("");
-            
+            if (extraLine)
+            {
+                Console.WriteLine("");
+            }
         }
 
         public static string IngresoTexto(string mensaje = "Ingrese un texto")
@@ -77,38 +81,49 @@ namespace LaConsola
             Console.ReadKey();
         }
 
-        public static void PresionaXParaSalir(string tecla = "x")
+        /*
+            Ref.: https://docs.microsoft.com/es-es/dotnet/api/system.console.keyavailable?view=net-5.0#System_Console_KeyAvailable
+         */
+        public static void PresionaXParaSalir(string tecla = "X")
         {
-            bool valor;
-            bool continuar;
             string Mensaje = "Presiona la tecla " + tecla + " para salir";
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\n"+Mensaje);
+            Console.WriteLine("\n");
+            
+            ConsoleKeyInfo cki;
+
+            ConsoleKey ck = GetConsoleKeyFromString(tecla);
+
             do
             {
+                Console.WriteLine(Mensaje);
 
-                continuar = !bool.TryParse(
-                    Console.ReadLine()
-                            .ToLower()
-                            .Replace(tecla, "true"),
-                    out valor);
-                if (continuar)
-                {
-                    Console.WriteLine(Mensaje);
-                }
-            } while (continuar);
+                cki = Console.ReadKey(true);
+            } while (cki.Key != ck);
 
             Console.ResetColor();
-            
+
             Exit();
+        }
+
+        /*
+            Ref.: https://stackoverflow.com/a/11495179
+         */
+        private static ConsoleKey GetConsoleKeyFromString(string tecla)
+        {
+            ConsoleKey ck;
+
+            Enum.TryParse<ConsoleKey>(tecla, out ck);
+
+            return ck;
         }
 
         public static void Exit()
         {
             Console.Clear();
 
-            Console.WriteLine("\n\n\tHasta pronto!\n");
+            Console.WriteLine("\n\n\tHasta pronto {0}!\n", NombreUsuario);
 
             System.Environment.Exit(0);
         }
