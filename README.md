@@ -1,4 +1,12 @@
-# C#
+# EjerciciosCSharp
+**Construccion de Aplicaciones Informaticas**
+
+## La Consola
+dotnet run --project LaConsola/LaConsola.csproj
+
+## Cadenas
+dotnet run --project Cadenas/Cadenas.csproj
+
 
 ## La consola
 **https://docs.microsoft.com/es-es/dotnet/api/system.console**  
