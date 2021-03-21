@@ -9,7 +9,7 @@ namespace LaConsola
     class Program
     {
         private static string NombreUsuario { get; set; }
-        private static Frases Frases = new Frases();
+        private static Frases Frases;
         
         static void Main(string[] args)
         {           
@@ -54,7 +54,7 @@ namespace LaConsola
             Input.WriteGreenLine("          Momento de reflexion");
             Input.WriteGreenLine("¿En que estas pensando?");
 
-            IngresoFrases();
+            Frases = Helper.Frase.IngresoFrases();
 
             Console.Clear();
         }
@@ -63,29 +63,6 @@ namespace LaConsola
         {           
             Input.SalirControlMas("F");
             Input.Exit(NombreUsuario);
-        }
-
-        public static void IngresoFrases(
-            string salida = "fin", 
-            string Mensaje = "Escribe tu frase"
-        ) {
-            Console.WriteLine("\n");
-            
-            string input;
-
-            do
-            {
-                Console.WriteLine("\t" + Mensaje);
-
-                Input.WriteRedLine("\to \""+ salida +"\" para no ingresar mas frases");
-
-                input = Console.ReadLine();
-
-                if (salida != input)
-                {
-                    Frases.agregarFrase(input);
-                }
-            } while (salida != input);
         }
     }
 }
