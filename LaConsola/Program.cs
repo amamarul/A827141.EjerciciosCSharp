@@ -156,9 +156,9 @@ namespace LaConsola
         {
             ConsoleKeyInfo cki;
             // Prevent example from ending if CTL+C is pressed.
-            Console.TreatControlCAsInput = true;
+            // Console.TreatControlCAsInput = true;
 
-            string salir = "CTL+" + teclaSalida.ToUpper();
+            string salir = "SHIFT+CTL+" + teclaSalida.ToUpper();
             string tempsalir = "";
 
             WriteRedLine("Presiona CTL + "+ teclaSalida +" para salir");
@@ -168,10 +168,18 @@ namespace LaConsola
 
                 tempsalir = "";
 
-                if ((cki.Modifiers & ConsoleModifiers.Control) != 0) 
-                    tempsalir += "CTL+";
+                if((cki.Modifiers & ConsoleModifiers.Shift) != 0) {
+                    tempsalir += "SHIFT+";
+                    Console.Write("SHIFT+");
+                }
 
+                if ((cki.Modifiers & ConsoleModifiers.Control) != 0) {
+                    tempsalir += "CTL+";
+                    Console.Write("CTL+");
+                } 
+                    
                 tempsalir += cki.Key;
+                Console.WriteLine(cki.Key);
                 
             } while (salir != tempsalir);
 
