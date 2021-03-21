@@ -1,4 +1,4 @@
-namespace LaConsola.Model
+namespace FrasesLib.Model
 {
     public class Frase
     {

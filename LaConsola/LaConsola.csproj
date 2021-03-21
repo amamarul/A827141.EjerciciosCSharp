@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Helper\Helper.csproj" />
+    <ProjectReference Include="..\FrasesLib\FrasesLib.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Threading;
-using LaConsola.Model;
+using FrasesLib;
 using Helper;
 
 namespace LaConsola
@@ -9,7 +9,7 @@ namespace LaConsola
     class Program
     {
         private static string NombreUsuario { get; set; }
-        private static List<Frase> Frases = new List<Frase> {};
+        private static Frases Frases = new Frases();
         
         static void Main(string[] args)
         {           
@@ -83,7 +83,7 @@ namespace LaConsola
 
                 if (salida != input)
                 {
-                    Frases.Add(new Frase(input));
+                    Frases.agregarFrase(input);
                 }
             } while (salida != input);
         }
