@@ -1,18 +1,21 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System;
 using System.Threading;
+using LaConsola.Model;
 
 namespace LaConsola
 {
     class Program
     {
         private static string NombreUsuario { get; set; }
-        
+        private static List<Frase> Frases = new List<Frase> {};
         
         static void Main(string[] args)
         {           
             Uno();
             Dos();
-            Tres();
+            // Tres();
+            Cuatro();
         }
 
         private static void Uno() 
@@ -39,6 +42,18 @@ namespace LaConsola
         private static void Tres() 
         {           
             PresionaXParaSalir();
+        }
+
+        private static void Cuatro() 
+        {           
+            Console.Clear();
+
+            WriteGreenLine("          Momento de reflexion");
+            WriteGreenLine("¿En que estas pensando?");
+
+            IngresoFrases();
+
+            Console.Clear();
         }
 
         public static void WriteGreenLine(string value, bool extraLine = true)
@@ -84,10 +99,8 @@ namespace LaConsola
         /*
             Ref.: https://docs.microsoft.com/es-es/dotnet/api/system.console.keyavailable?view=net-5.0#System_Console_KeyAvailable
          */
-        public static void PresionaXParaSalir(string tecla = "X")
+        public static void PresionaXParaSalir(string tecla = "X", string Mensaje = "Presiona la tecla X para salir")
         {
-            string Mensaje = "Presiona la tecla " + tecla + " para salir";
-
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\n");
             
@@ -105,6 +118,36 @@ namespace LaConsola
             Console.ResetColor();
 
             Exit();
+        }
+
+        public static void IngresoFrases(
+            string salida = "fin", 
+            string Mensaje = "Escribe tu frase o \"fin\" para salir"
+        ) {
+            Console.WriteLine("\n");
+            
+            string input;
+
+            do
+            {
+                WriteRedLine(Mensaje);
+
+                input = Console.ReadLine();
+
+                if (salida != input)
+                {
+                    Frases.Add(new Frase(input));
+                }
+            } while (salida != input);
+
+            Exit();
+        }
+
+        private static void WriteRedLine(string Mensaje)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(Mensaje);
+            Console.ResetColor();
         }
 
         /*
