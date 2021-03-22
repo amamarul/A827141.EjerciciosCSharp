@@ -19,6 +19,7 @@ namespace Cadenas
             Dos();
             Tres();
             Cuatro();
+            Cinco();
         }
 
         private static void Uno() 
@@ -79,6 +80,22 @@ namespace Cadenas
             Console.WriteLine($"\nTexto ingresado");
             
             Console.WriteLine(Texto.ToLower());
+
+            Console.WriteLine($"");
+            
+            Input.PresionaUnaTeclaParaContinuar("Presiona una tecla para continuar");
+        }
+
+        private static void Cinco() 
+        {
+            Console.Clear();
+            string Texto = Input.IngresoTexto("Por favor ingrese un texto cualquiera");
+
+            Console.Clear();
+            
+            Console.WriteLine($"\nTexto ingresado SIN ACENTOS");
+            
+            Console.WriteLine(Cadena.reemplazarAcentosEnVocales(Texto));
 
             Console.WriteLine($"");
             
