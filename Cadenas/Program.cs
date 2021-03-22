@@ -18,6 +18,7 @@ namespace Cadenas
             Uno();
             Dos();
             Tres();
+            Cuatro();
         }
 
         private static void Uno() 
@@ -61,6 +62,23 @@ namespace Cadenas
             Console.WriteLine($"\nTexto ingresado");
             
             Console.WriteLine(Texto.ToUpper());
+
+            Console.WriteLine($"");
+            
+            Input.PresionaUnaTeclaParaContinuar("Presiona una tecla para continuar");
+        }
+
+        private static void Cuatro() 
+        {
+            Console.Clear();
+            string Texto = Cadena.ToTitleCase(
+                Input.IngresoTexto("Por favor ingrese un texto cualquiera"));
+
+            Console.Clear();
+            
+            Console.WriteLine($"\nTexto ingresado");
+            
+            Console.WriteLine(Texto.ToLower());
 
             Console.WriteLine($"");
             
