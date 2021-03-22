@@ -1,5 +1,6 @@
 using FrasesLib.Model;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FrasesLib
 {
@@ -18,7 +19,7 @@ namespace FrasesLib
         }
 
         public List<Frase> ListaDeFrases { 
-            get => _frases;
+            get => this._frases;
         }
 
         public void agregarFrase(string texto)
@@ -32,6 +33,13 @@ namespace FrasesLib
             {
                 this.agregarFrase(frase);
             }
+        }
+
+        public List<Frase> buscarFrasesQueContienen(string texto)
+        {
+            return this._frases
+                    .Where( frase => frase.Texto.Contains(texto))
+                    .ToList();
         }
     }
 }

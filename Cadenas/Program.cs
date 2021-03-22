@@ -1,16 +1,21 @@
 ﻿using System;
 using Helper;
+using FrasesLib;
+using FraseModel = FrasesLib.Model.Frase;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Cadenas
 {
     class Program
     {
-        private static string NombreUsuario { get; set; }
-        
-        
+        private static string NombreUsuario { get; set; }        
+
         static void Main(string[] args)
         {
             Uno();
+            Dos();
         }
 
         private static void Uno() 
@@ -30,14 +35,15 @@ namespace Cadenas
         private static void Dos() 
         {
             Console.Clear();
+            string searchedString = "fin";
 
-            NombreUsuario = Input.IngresoTexto("Por favor ingrese su nombre");
+            Frases frases = Helper.Frase.IngresoFrases();
 
-            Console.Clear();
-
-            Console.WriteLine("\n\nHola " + NombreUsuario + "\n");
-
-            Input.PresionaUnaTeclaParaContinuar("Presiona una tecla para continuar");
+            foreach (FraseModel frase in frases.buscarFrasesQueContienen(searchedString))
+            {
+                Console.WriteLine("La frase: '{0}' contiene la cadena '{1}'",
+                frase.Texto, searchedString);
+            }
         }
     }
 }
