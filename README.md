@@ -16,7 +16,7 @@ dotnet run --project Cadenas/Cadenas.csproj
 3. Lea las teclas presionadas y finalice al presionar la tecla “X”.  
 4. Permita el ingreso de frases, finalizando cuando el usuario ingresa “fin”.  
 5. Lea las teclas presionadas y finalice al presionar Ctrl+F (Ctrl y F al mismo tiempo).  
-6. Lea las teclas presionadas y finalice al presionar Shift+Ctrl+F.  (TODO)
+6. Lea las teclas presionadas y finalice al presionar Shift+Ctrl+F.  (Probar en Windowss)
 
 ## Cadenas
 **https://docs.microsoft.com/es-es/dotnet/api/system.string**

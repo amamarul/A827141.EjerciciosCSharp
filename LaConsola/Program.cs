@@ -17,7 +17,8 @@ namespace LaConsola
             Dos();
             // Tres();
             Cuatro();
-            Cinco();
+            // Cinco();
+            Seis();
         }
 
         private static void Uno() 
@@ -62,6 +63,15 @@ namespace LaConsola
         private static void Cinco() 
         {           
             Input.SalirControlMas("F");
+            Input.Exit(NombreUsuario);
+        }
+
+        private static void Seis() 
+        {           
+            Console.Clear();
+
+            Input.SalirShiftControlF();
+
             Input.Exit(NombreUsuario);
         }
     }

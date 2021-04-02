@@ -114,6 +114,30 @@ namespace Helper
             return ck;
         }
 
+        /*
+            Ref.: https://docs.microsoft.com/en-us/dotnet/api/system.console.readkey?view=net-5.0
+         */
+        public static void SalirShiftControlF()
+        {
+            ConsoleKeyInfo tecla;
+            
+            // Prevent example from ending if CTL+C is pressed.
+            // Console.TreatControlCAsInput = true;
+
+            do {
+                Input.WriteRedLine("Presiona Shift + CTL + F para salir");
+
+                tecla = Console.ReadKey(true);
+
+                if (((tecla.Modifiers & ConsoleModifiers.Shift) != 0) &&
+                        ((tecla.Modifiers & ConsoleModifiers.Control) != 0) &&
+                            (tecla.Key == ConsoleKey.F))
+                {
+                    break;
+                }
+            } while (true);
+        }
+
         public static void Exit(string NombreUsuario)
         {
             Console.Clear();
