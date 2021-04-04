@@ -20,6 +20,7 @@ namespace Cadenas
             Tres();
             Cuatro();
             Cinco();
+            Seis();
         }
 
         private static void Uno() 
@@ -100,6 +101,25 @@ namespace Cadenas
             Console.WriteLine($"");
             
             Input.PresionaUnaTeclaParaContinuar("Presiona una tecla para continuar");
+        }
+
+        private static void Seis() 
+        {
+            Console.Clear();            
+
+            string Texto1 = Input.IngresoTexto("Por favor ingrese una frase");
+            string Texto2 = Input.IngresoTexto("Por favor ingrese otra frase");
+            
+            Console.Clear();
+
+            Input.WriteYellowLine(
+                string.Format(
+                    "Frase 1: {0}\nFrase 2: {1}\nLas frases {2} son iguales.",
+                    Texto1,
+                    Texto2,
+                    ((Texto1 == Texto2) ? "SI" : "NO")
+                )
+            );
         }
     }
 }

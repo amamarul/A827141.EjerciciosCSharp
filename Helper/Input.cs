@@ -40,6 +40,13 @@ namespace Helper
             Console.ResetColor();
         }
 
+        public static void WriteYellowLine(string Mensaje)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(Mensaje);
+            Console.ResetColor();
+        }
+
         public static void PresionaUnaTeclaParaContinuar(string mensaje = "\n\nPresiona una tecla para continuar")
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
